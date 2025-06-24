@@ -1,0 +1,11 @@
+; stub
+.import bms_create
+ jmp bms_create
+.import bms_free
+ jmp bms_free
+.import bms_get
+ jmp bms_get
+.import bms_put
+ jmp bms_put
+.import bms_version
+ jmp bms_version
