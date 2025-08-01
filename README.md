@@ -6,4 +6,7 @@ manage only 1 bank
 
 16000 bytes max can be stored
 
-use bms to build
+use [bpm](https://github.com/orix-software/bpm) to build
+
+![Arrays](docs/imgs/array.png)
+
