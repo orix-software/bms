@@ -2,29 +2,39 @@
 #define FLAG_PROT_READ_WRITE 0x01 //
 #define FLAG_PERSISTANT_BANK 0x02 // La banque est persistante, elle ne sera pas libérée à la fin de l'exécution du programme.
 
-#define bms_MAX_BANKS 4
+#define BMS_MAX_BANKS 1
+
+#define BMS_EOK                       0x00
+#define BMS_EBANK_FULL                0x01
+#define BMS_CAN_NOT_RUN_INTO_BANK     0x02
+#define BMS_LENGTH_REQUESTED_TOO_LONG 0x03
 
 struct bms_struct {
-    char set[bms_MAX_BANKS];
-    char bank[bms_MAX_BANKS];
-    char bankid[bms_MAX_BANKS];
+    unsigned int lboundaries[BMS_MAX_BANKS];
+    unsigned int hboundaries[BMS_MAX_BANKS];
+    unsigned char current_bank_register;
+    unsigned char current_set;
+    char set[BMS_MAX_BANKS];
+    char bank_register[BMS_MAX_BANKS];
+    char bankid[BMS_MAX_BANKS];
     char number_of_banks;
+    unsigned int fp_offset;
+    unsigned int length; // Length of the BMS structure
     char version[10]; // Version string, e.g., "2025.3"
-};
+  };
 
-typedef enum {
-  bms_SWITCH_ON = 0,
-  bms_SWITCH_OFF = 1,
-} bms_SWITCH;
 
 typedef struct bms_struct bms;
 
 
-bms *bms_create(unsigned int length, unsigned char flags);
-unsigned char bms_free(bms *bms);
+bms *bms_create(off_t length, unsigned char flags);
 
-unsigned char bms_get(bms *bms, unsigned int offset, unsigned int length, void *data);
-unsigned char bms_put(bms *bms, unsigned int offset, unsigned int length, void *data);
+void bms_free(bms *bms);
 
+unsigned int bms_seek(bms *bms, unsigned int offset, unsigned char whence);
+
+unsigned int bms_read(bms *bms, unsigned int length, void *data);
+unsigned int bms_write(bms *bms, unsigned int length, void *data);
+unsigned char bms_error();
 
 

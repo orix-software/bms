@@ -1,11 +1,17 @@
 ; stub
+.import bms_bank_restore_state
+ jmp bms_bank_restore_state
+.import bms_bank_save_state
+ jmp bms_bank_save_state
 .import bms_create
  jmp bms_create
+.import bms_error
+ jmp bms_error
 .import bms_free
  jmp bms_free
-.import bms_get
- jmp bms_get
-.import bms_put
- jmp bms_put
+.import bms_seek
+ jmp bms_seek
 .import bms_version
  jmp bms_version
+.import bms_write
+ jmp bms_write

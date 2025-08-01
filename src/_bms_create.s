@@ -6,7 +6,7 @@
 
 .import popax
 
-.importzp tmp1
+.importzp tmp1, ptr1
 
 ; void *bms_create(size_t length, unsigned char flags);
 .proc _bms_create
@@ -18,12 +18,19 @@
     ; Save flags
     sta     flags
 
-    ; Get length
+    ; Get length (0 to 15 bits)
     jsr     popax
+    sta     ptr1
+    stx     ptr1 + 1
 
-    tay
-    lda     flags
+    ; Get length (16 to 23 bits)
+    jsr     popax
+    sta     RES
+    stx     RES + 1
+
+    lda     ptr1
+    ldx     ptr1 + 1
+    ldy     flags
     jmp     bms_create
-
 
 .endproc

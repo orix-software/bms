@@ -1,4 +1,5 @@
-#lsmem
+echo lsmem > lsmem.txt
+cat lsmem.txt
 #pause
 
 # $02F7
