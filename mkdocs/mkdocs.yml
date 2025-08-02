@@ -1,5 +1,7 @@
 site_name: bms v2025.3 DOCUMENTATION
 
+site_dir: ../docs/
+
 # markdown_extensions:
 #     - pymdownx.highlight
 #     - pymdownx.inlinehilite
