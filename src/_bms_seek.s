@@ -11,7 +11,7 @@
 ; unsigned int bms_seek(bms *bms, unsigned int offset, unsigned char whence);
 
 .proc _bms_seek
-
+    ;;@proto unsigned int bms_seek(bms *bms, unsigned int offset, unsigned char whence);
     sta     tmp0         ; Save A
 
     jsr     popax

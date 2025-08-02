@@ -148,10 +148,7 @@ jobs:
             chmod 755 ../bpm/src/bpm
             echo "/home/runner/work/file/cc65/bin" >> $GITHUB_PATH
             echo "Bpm version :"
-            bpm  --force-update  -V
-            bpm  --force-update  -V
-            echo Using bpm ...
-            bpm --force-update plugins install orixsdk --replace-for-new-project
+            bpm --force-update --replace-for-new-project -V
             bpm --force-update build
           else
             CC65_HOME=${GITHUB_WORKSPACE}/../cc65 make
@@ -187,7 +184,7 @@ jobs:
         run: ls -lR build
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.job_vars.outputs.REPO_NAME }}
           path: |
@@ -236,7 +233,7 @@ jobs:
       # On pourrait faire l'extraction directement à la racine si VERSION est dans l'artifact
       - name: Download Artifact
         id: download
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ needs.build.outputs.repo_name }}
           path: artifact

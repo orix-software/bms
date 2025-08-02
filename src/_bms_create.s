@@ -8,8 +8,8 @@
 
 .importzp tmp1, ptr1
 
-; void *bms_create(size_t length, unsigned char flags);
 .proc _bms_create
+    ;;@proto void *bms_create(size_t length, unsigned char flags);
     ; implement to create a memory mapping.
     ; A contains flags
     flags := tmp1

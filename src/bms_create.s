@@ -14,7 +14,7 @@
 
 .proc bms_create
     ;;@brief create slot for bank memory system. Returns NULL and store error, if something is wrong, or returns struct ptr if success
-    ;;@inputA flags
+    ;;@inputA flags (eg : FLAG_PROT_READ_WRITE only supported)
     ;;@inputY low byte of the length to allocate (0 to 7)
     ;;@inputX high byte of the length to allocate (8 to 15)
     ;;@inputMEM_RES 2 byte of the length to allocate (16 to 23)
@@ -25,6 +25,7 @@
     ;;@modifyMEM_libzp+4
     ;;@modifyMEM_libzp+5
     ;;@returnsA contains the bank number found
+    ;;@note Use "BMS_CREATE length0_to_15, length16_to_31, flags" macro in 'include/bms.mac'
 
 
     bms_flags  := TR2  ; One byte

@@ -26,7 +26,6 @@ struct bms_struct {
 
 typedef struct bms_struct bms;
 
-
 bms *bms_create(off_t length, unsigned char flags);
 
 void bms_free(bms *bms);
@@ -36,5 +35,6 @@ unsigned int bms_seek(bms *bms, unsigned int offset, unsigned char whence);
 unsigned int bms_read(bms *bms, unsigned int length, void *data);
 unsigned int bms_write(bms *bms, unsigned int length, void *data);
 unsigned char bms_error();
+unsigned char bms_version();
 
 

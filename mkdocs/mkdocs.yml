@@ -2,11 +2,11 @@ site_name: bms v2025.3 DOCUMENTATION
 
 site_dir: ../docs/
 
-# markdown_extensions:
+markdown_extensions:
 #     - pymdownx.highlight
 #     - pymdownx.inlinehilite
-#     - pymdownx.tabbed:
-#         alternate_style: true
+    - pymdownx.tabbed:
+        alternate_style: true
 #     - pymdownx.snippets
 #     - pymdownx.critic
 #     - pymdownx.caret
@@ -17,26 +17,30 @@ site_dir: ../docs/
 #     - md_in_html
 #     - admonition
 #     - pymdownx.details
-#     - pymdownx.superfences:
-#         custom_fences:
-#           - name: mermaid
-#             class: mermaid
-#             format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.superfences:
+        custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
 #     - tables
 #     - pymdownx.emoji:
 #         emoji_index: !!python/name:materialx.emoji.twemoji
 #         emoji_generator: !!python/name:materialx.emoji.to_svg
 
-# plugins:
-#  - git-revision-date
-#  - search
-#  - markmap
+plugins:
+ - git-revision-date
+ - search
+ - markmap
 #  - mkdocs-video
 
 dev_addr: '172.30.72.43:8002'
 
 theme:
     name: material
+    features:
+      - search.suggest
+      - search.highlight
+      - search.share
     #name: readthedocs
 #     logo: favicon.png
 #     custom_dir: overrides
@@ -50,33 +54,8 @@ theme:
 #         - content.tabs.link
 
 nav:
-    - 1. Getting Started:
-        - 1.1. Introduction: index.md
-        - 1.2. Installation: installation.md
-        - 1.3. First Steps with bpm: first_step.md
-        - 1.4. Tutorial: tutorial.md
-    - 2. Bpm Guide:
-        - 2.1. BPM Overview: why.md
-        - 2.2 General Commands:
-            - 2.2.1. bpm: commands/bpm.md
-            - 2.2.2. bpm plugins: commands/bpm_plugins.md
-            - 2.2.3. bpm config: commands/bpm_config.md
-        - 2.3 Build Commands:
-            - 2.3.1. bpm build: commands/bpm_build.md
-            - 2.3.2. bpm doc: commands/bpm_doc.md
-            - 2.3.3. bpm run: commands/bpm_run.md
-            - 2.3.4. bpm doc: commands/bpm_package.md
-        - 2.4 Manifest Commands:
-            - 2.4.1. bpm add: commands/bpm_add.md
-            - 2.4.2. bpm remove: commands/bpm_remove.md
-            - 2.4.3. bpm update: commands/bpm_update.md
-            - 2.4.4. bpm list: commands/bpm_list.md
-            - 2.4.5. bpm new: commands/bpm_new.md
-            - 2.4.6. bpm search: commands/bpm_search.md
-            - 2.4.7. bpm addsrc: commands/bpm_addsrc.md
-        - 2.5 publishing commands:
-            - 2.5.1. bpm publish: commands/bpm_publish.md
-            - 2.5.2. bpm unpublish: commands/bpm_unpublish.md
+    - home: index.md
+
 
 
 # extra_css:

@@ -3,7 +3,7 @@
 ## bms_error
 ***Description***
 
-returns the error code
+Returns the error code
 
 ***Returns***
 

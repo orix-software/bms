@@ -3,6 +3,7 @@
 .import bms_error
 
 .proc _bms_error
+    ;;@proto unsigned char bms_error();
     ; This function handles BMS errors.
     ; It expects the error code in the A register.
     jmp     bms_error
