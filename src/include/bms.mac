@@ -1,0 +1,12 @@
+.macro BMS_CREATE length0_to_15, length16_to_31, flags
+    lda     #<length16_to_31
+    sta     RES
+
+    lda     #>length16_to_31
+    sta     RES + 1
+
+    lda     #<length0_to_15
+    ldx     #>length0_to_15
+    ldy     #flags
+    jmp     bms_create
+.endmacro

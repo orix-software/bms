@@ -1,5 +1,7 @@
 # BMS : Bank Memory System
 
+Work in progress
+
 Lib for bank uses
 
 manage only 1 bank
