@@ -1,5 +1,7 @@
 # BMS : Bank Memory System
 
+[Documentation](https://orix-software.github.io/bms/)
+
 Work in progress
 
 Lib for bank uses
