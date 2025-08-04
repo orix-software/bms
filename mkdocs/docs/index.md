@@ -4,6 +4,8 @@ It's a cc65 library for Orix in order to manage bank on twilighte board.
 
 It only manage ram bank.
 
+![Arrays](imgs/array.png)
+
 ## Usage in c language
 
 * [void *bms_create(size_t length, unsigned char flags);](_bms_create.md)
@@ -12,7 +14,7 @@ It only manage ram bank.
 * [unsigned int bms_write(bms *bms, unsigned int length, void *data);](_bms_write.md)
 * [unsigned int bms_read(bms *bms, unsigned int length, void *data);](_bms_read.md)
 * [unsigned char bms_error();](_bms_error.md)
-* * [unsigned char bms_error();](_bms_version.md)
+* [unsigned char bms_error();](_bms_version.md)
 
 ## Usage in assembly language
 
