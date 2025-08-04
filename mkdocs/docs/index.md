@@ -6,6 +6,7 @@ It only manage ram bank.
 
 ![Arrays](imgs/arrays.png)
 
+
 ## Usage in c language
 
 * [void *bms_create(size_t length, unsigned char flags);](_bms_create.md)
