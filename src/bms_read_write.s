@@ -1,14 +1,18 @@
 .include "telestrat.inc"
 .include "bms.inc"
 
-.export bms_write
+.export bms_read_write
 
 .import bms_bank_save_state
 .import bms_bank_restore_state
 
 ; bms_put(bms_instance, 5, str_hello);
-.proc bms_write
-    ; A & X contains the ptr to the bms structure
+.proc bms_read_write
+    ;;@brief Write bytes
+    ;;@inputA contains the low ptr to the bms structure
+    ;;@inputX contains the high ptr byte to the bms structure
+    ;;@inputY mode
+
     ; Y is the mode
     ; RES := ptr struct
 

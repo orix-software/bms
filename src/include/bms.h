@@ -9,6 +9,11 @@
 #define BMS_CAN_NOT_RUN_INTO_BANK     0x02
 #define BMS_LENGTH_REQUESTED_TOO_LONG 0x03
 
+#define BMS_WRITE_MODE  0x00 // Write mode
+#define BMS_READ_MODE   0x01 // Read mode
+
+
+
 struct bms_struct {
     unsigned int lboundaries[BMS_MAX_BANKS];
     unsigned int hboundaries[BMS_MAX_BANKS];
@@ -32,8 +37,7 @@ void bms_free(bms *bms);
 
 unsigned int bms_seek(bms *bms, unsigned int offset, unsigned char whence);
 
-unsigned int bms_read(bms *bms, unsigned int length, void *data);
-unsigned int bms_write(bms *bms, unsigned int length, void *data);
+unsigned int bms_read_write(bms *bms, unsigned int length, void *data, unsigned mode);
 unsigned char bms_error();
 unsigned char bms_version();
 

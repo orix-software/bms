@@ -30,8 +30,8 @@ BMS_VERSION:
 .define BMS_CAN_NOT_RUN_INTO_BANK     $02
 .define BMS_LENGTH_REQUESTED_TOO_LONG $03
 
-.define WRITE_MODE  $00 ; Write mode
-.define READ_MODE   $01 ; Read mode
+.define BMS_WRITE_MODE  $00 ; Write mode
+.define BMS_READ_MODE   $01 ; Read mode
 
 .struct bms_struct
     lboundaries         .res BMS_MAX_BANKS * BMS_LENGTH_BOUNDARIES ; Lower boundaries of the banks (16 bits each)

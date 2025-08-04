@@ -110,10 +110,10 @@ int main() {
     puts("+-------------------------------------+");
     printf("Number of banks : %d\n", bms_instance->number_of_banks);
 
-    bms_write(bms_instance, 5, str_hello);
-    bms_write(bms_instance, 5, str_hello);
+    bms_read_write(bms_instance, 5, str_hello, BMS_WRITE_MODE);
+    bms_read_write(bms_instance, 5, str_hello, BMS_WRITE_MODE);
 
-    bms_write(bms_instance, 16001, verify);
+   //bms_read_write(bms_instance, 16001, verify,BMS_WRITE_MODE);
 
     // // // Free the bms instance
     bms_free(bms_instance);
