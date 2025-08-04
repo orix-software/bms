@@ -4,7 +4,7 @@ It's a cc65 library for Orix in order to manage bank on twilighte board.
 
 It only manage ram bank.
 
-![Arrays](imgs/array.png)
+![Arrays](imgs/arrays.png)
 
 ## Usage in c language
 
