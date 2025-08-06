@@ -27,7 +27,6 @@
     ;;@returnsA contains the bank number found
     ;;@note Use "BMS_CREATE length0_to_15, length16_to_31, flags" macro in 'include/bms.mac'
 
-
     bms_flags  := TR2  ; One byte
     bms_length := libzp  ; 2 bytes others bytes are in RES
     bms_ptr    := libzp + 2 ; 2 bytes

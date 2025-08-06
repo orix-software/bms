@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="..">
+      
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>bms read write - bms v2025.3 DOCUMENTATION</title>
+        <title>2025.3 Version - bms v2025.3 DOCUMENTATION</title>
       
     
     
@@ -58,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#unsigned-int-bms_writebms-bms-unsigned-int-length-void-data" class="md-skip">
+        <a href="#bms-bank-management-system-20253" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-               bms read write
+              2025.3 Version
             
           </span>
         </div>
@@ -211,10 +213,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../2025.3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2025.3 Version
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -223,6 +245,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage-in-c-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage in c language
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-in-assembly-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage in assembly language
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -244,6 +313,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -252,9 +323,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unsigned-int-bms_writebms-bms-unsigned-int-length-void-data" class="md-nav__link">
+  <a href="#usage-in-c-language" class="md-nav__link">
     <span class="md-ellipsis">
-      unsigned int bms_write(bms bms, unsigned int length, void data);
+      Usage in c language
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-in-assembly-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage in assembly language
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
     </span>
   </a>
   
@@ -275,9 +364,29 @@
                   
 
 
-  <h1> bms read write</h1>
-
-<h2 id="unsigned-int-bms_writebms-bms-unsigned-int-length-void-data">unsigned int bms_write(bms <em>bms, unsigned int length, void </em>data);</h2>
+<h1 id="bms-bank-management-system-20253">BMS : bank management system (2025.3)</h1>
+<h2 id="usage-in-c-language">Usage in c language</h2>
+<ul>
+<li><a href="_bms_create/">void *bms_create(size_t length, unsigned char flags);</a></li>
+<li><a href="_bms_free/">unsigned char bms_free(bms *bms);</a></li>
+<li><a href="_bms_seek/">unsigned int bms_seek(bms *bms, unsigned int offset, unsigned char whence);</a></li>
+<li><a href="_bms_read_write/">unsigned int bms_read_write(bms <em>bms, unsigned int length, void </em>data, unsigned char mode);</a></li>
+<li><a href="_bms_error/">unsigned char bms_error();</a></li>
+<li><a href="_bms_version/">unsigned char bms_version();</a></li>
+</ul>
+<h2 id="usage-in-assembly-language">Usage in assembly language</h2>
+<ul>
+<li><a href="bms_create/">bms_create</a></li>
+<li><a href="bms_free/">bms_free</a></li>
+<li><a href="bms_seek/">bms_seek</a></li>
+<li><a href="bms_write.md">bms_read_write</a></li>
+<li><a href="bms_error/">bms_error</a></li>
+<li><a href="bms_version/">bms_version</a></li>
+</ul>
+<h2 id="examples">Examples</h2>
+<ul>
+<li><a href="example_create_free.md">Examples</a></li>
+</ul>
 
 
 
@@ -298,7 +407,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2025-08-04
+    2025-08-06
   </span>
 
     

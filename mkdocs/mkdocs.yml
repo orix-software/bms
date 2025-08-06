@@ -54,9 +54,8 @@ theme:
 #         - content.tabs.link
 
 nav:
-    - home: index.md
-
-
+    - index.md
+    - 2025.3 Version: 2025.3/index.md
 
 # extra_css:
 #     - stylesheets/extra.css
