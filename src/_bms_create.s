@@ -10,6 +10,9 @@
 
 .proc _bms_create
     ;;@proto void *bms_create(size_t length, unsigned char flags);
+    ;;@brief Create slots for bank memory system. Returns NULL and store error, if something is wrong, or returns struct ptr if success
+    ;;@param flags (unsigned char) as FLAG_PROT_READ_WRITE
+    ;;@param length (long)
     ; implement to create a memory mapping.
     ; A contains flags
     flags := tmp1

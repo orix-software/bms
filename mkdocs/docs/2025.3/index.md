@@ -14,7 +14,7 @@
 * [bms_create](bms_create.md)
 * [bms_free](bms_free.md)
 * [bms_seek](bms_seek.md)
-* [bms_read_write](bms_write.md)
+* [bms_read_write](bms_read_write.md)
 * [bms_error](bms_error.md)
 * [bms_version](bms_version.md)
 

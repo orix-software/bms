@@ -12,6 +12,11 @@
 
 .proc _bms_seek
     ;;@proto unsigned int bms_seek(bms *bms, unsigned int offset, unsigned char whence);
+    ;;@brief seek to offset
+    ;;@param bms (bms *) bms struct
+    ;;@param offset (unsigned int)  data
+    ;;@param whence (unsigned char)
+    ;;@returns (unsigned int) result
     sta     tmp0         ; Save A
 
     jsr     popax

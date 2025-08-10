@@ -15,6 +15,12 @@
 BMS_VERSION:
     .asciiz "2025.3"
 
+
+.define BMS_SEEK_CUR        0
+.define BMS_SEEK_END        1
+.define BMS_SEEK_SET        2
+
+
 .ifdef BMS_EXTENDED
 .define BMS_LENGTH_BOUNDARIES 4 ; Length of the boundaries in bytes (16 bits each)
 .define BMS_MAX_BANKS         1

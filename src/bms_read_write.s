@@ -6,12 +6,37 @@
 .import bms_bank_save_state
 .import bms_bank_restore_state
 
-; bms_put(bms_instance, 5, str_hello);
+; bms_read_write(bms_instance, 5, str_hello, mode);
 .proc bms_read_write
-    ;;@brief Write bytes
+    ;;@brief read or Write bytes (TR0 and TR1 contains the data copyied from bank)
     ;;@inputA contains the low ptr to the bms structure
     ;;@inputX contains the high ptr byte to the bms structure
     ;;@inputY mode
+    ;;@inputMEM TR2  length_to_write (high)
+    ;;@inputMEM TR3  length_to_write (low)
+    ;;@
+    ;;@```asm
+    ;;@` ; Store size
+    ;;@` lda #<5
+    ;;@` sta TR2
+    ;;@` lda #>5
+    ;;@` sta TR3
+    ;;@` ldx #>5
+    ;;@` ; Store ptr
+    ;;@` lda #<str
+    ;;@` sta TR0
+    ;;@` lda #>str
+    ;;@` sta TR1
+    ;;@` ldy #BMS_WRITE_MODE
+    ;;@` lda bms_ptr
+    ;;@` ldx bms_ptr + 1
+    ;;@` jsr bms_read_write
+    ;;@` rts
+    ;;@`str:
+    ;;@` .asciiz "hello"
+    ;;@```
+
+
 
     ; Y is the mode
     ; RES := ptr struct
@@ -43,7 +68,6 @@
     sta     length_to_write + 1
 
     lda     TR0 ; Data pointer
-
     sta     bms_data_ptr
 
     lda     TR1

@@ -11,6 +11,11 @@
 
 .proc _bms_read_write
     ;;@proto unsigned int bms_write(bms *bms, unsigned int length, void *data);
+    ;;@brief read or write data
+    ;;@param bms (bms *) bms struct
+    ;;@param data (void *) data
+    ;;@param length (void *) length to put or to get
+    ;;@returns (unsigned int) number of bytes read or written
     ; A & X contains the ptr to the bms structure
     ; RES := offset 
     ; RESB := offset 32

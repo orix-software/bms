@@ -13,19 +13,35 @@
 .import bms_bank_restore_state
 
 .proc bms_create
-    ;;@brief create slot for bank memory system. Returns NULL and store error, if something is wrong, or returns struct ptr if success
+    ;;@brief Create slots for bank memory system. Returns NULL and store error, if something is wrong, or returns struct ptr if success
     ;;@inputA flags (eg : FLAG_PROT_READ_WRITE only supported)
     ;;@inputY low byte of the length to allocate (0 to 7)
     ;;@inputX high byte of the length to allocate (8 to 15)
-    ;;@inputMEM_RES 2 byte of the length to allocate (16 to 23)
+    ;;@inputMEM_RES 2 bytes of the length to allocate (16 to 23)
     ;;@modifyMEM_RES
     ;;@modifyMEM_TR2
     ;;@modifyMEM_libzp
     ;;@modifyMEM_libzp+2
     ;;@modifyMEM_libzp+4
     ;;@modifyMEM_libzp+5
-    ;;@returnsA contains the bank number found
+    ;;@returnsA the low ptr for bms struct it returns null ($00 in A and X)
+    ;;@returnsX the low ptr for bms struct it returns null ($00 in A and X)
     ;;@note Use "BMS_CREATE length0_to_15, length16_to_31, flags" macro in 'include/bms.mac'
+    ;;@```asm
+    ;;@` lda #FLAG_PROT_READ_WRITE
+    ;;@` ldx #>15000 ; Length : 15000
+    ;;@` ldy #<15000
+    ;;@` jsr bms_create
+    ;;@` cmp #$00
+    ;;@` bne @not_null
+    ;;@` cpx #$00
+    ;;@` bne @not_null
+    ;;@` ; can not be allocated
+    ;;@` rts
+    ;;@`@not_null:
+    ;;@` ...
+    ;;@```
+
 
     bms_flags  := TR2  ; One byte
     bms_length := libzp  ; 2 bytes others bytes are in RES

@@ -8,6 +8,7 @@
 
 .proc _bms_free
     ;;@proto unsigned char bms_free(bms *bms);
+    ;;@param bms (bms *) bms struct
     ; A & X contains the ptr to the bms structure
     jmp     bms_free
 .endproc

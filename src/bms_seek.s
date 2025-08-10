@@ -17,6 +17,18 @@
     ;;@inputTR1 high byte of the offset to seek
     ;;@modifyMEM_libzp
 
+    ;;@```asm
+    ;;@` lda #<5 ; Offset low
+    ;;@` sta TR0 ; Offset low
+    ;;@` lda #>5 ; Offset high
+    ;;@` sta TR1 ; Offset high
+    ;;@` lda bms_ptr ; Offset High of bms struct
+    ;;@` ldx bms_ptr + 1; Offset High of bms struct
+    ;;@` ldy #BMS_SEEK_CUR
+    ;;@` jsr bms_seek
+    ;;@` jsr rts
+    ;;@```
+
 
     ; A & X contains the ptr to the bms structure
     ; TR0 & TR1 contains the offset

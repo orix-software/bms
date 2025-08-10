@@ -20,8 +20,11 @@
     ;;@` lda bms_ptr
     ;;@` ldx bms_ptr + 1
     ;;@` jsr bms_free
+    ;;@` rts
     ;;@```
     ;;@explain Here
+
+
 
     bms_ptr  := libzp ; 2 bytes
     bms_tmp1 := libzp + 2 ; 1 byte

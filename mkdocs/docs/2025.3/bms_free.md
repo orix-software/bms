@@ -1,9 +1,11 @@
 ---
 
 ## bms_free
+
 ***Description***
 
 Free bms struct and liberate banks
+
 ***Input***
 
 * Accumulator : low byte of the bms struct pointer
@@ -19,7 +21,11 @@ Free bms struct and liberate banks
 
 ***Example***
 
-```asm lda bms_ptr ldx bms_ptr + 1 jsr bms_free```
-Here
+```asm
+ lda bms_ptr
+ ldx bms_ptr + 1
+ jsr bms_free
+ rts
+```
 Here
 

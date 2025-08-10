@@ -12,6 +12,9 @@
 #define BMS_WRITE_MODE  0x00 // Write mode
 #define BMS_READ_MODE   0x01 // Read mode
 
+#define BMS_SEEK_CUR        0
+#define BMS_SEEK_END        1
+#define BMS_SEEK_SET        2
 
 
 struct bms_struct {
