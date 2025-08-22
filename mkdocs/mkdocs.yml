@@ -71,6 +71,8 @@ nav:
             - bms_read_write: 2025.3/bms_read_write.md
             - bms_error: 2025.3/bms_error.md
             - bms_version: 2025.3/bms_version.md
+        - Examples:
+            - create_free: example_create_free.md
 
 # extra_css:
 #     - stylesheets/extra.css
