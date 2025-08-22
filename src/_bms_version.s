@@ -12,7 +12,7 @@
     ; This function returns the version of the bms library.
     ; The version is stored as a string in the data section.
 
-    jmp    version
+    jmp    bms_version
 
 
 

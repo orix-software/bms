@@ -56,21 +56,21 @@ theme:
 nav:
     - index.md
     - 2025.3 Version:
-        - home: 2025.3/index.md
+        - home: bms/2025.3/index.md
         - C Language:
-            - void *bms_create(): 2025.3/_bms_create.md
-            - bms_free(): 2025.3/_bms_free.md
-            - bms_seek(): 2025.3/_bms_seek.md
-            - bms_read_write(): 2025.3/_bms_read_write.md
-            - bms_error(): 2025.3/_bms_error.md
-            - bms_version(): 2025.3/_bms_version.md
+            - void *bms_create(): bms/2025.3/_bms_create.md
+            - bms_free(): bms/2025.3/_bms_free.md
+            - bms_seek(): bms/2025.3/_bms_seek.md
+            - bms_read_write(): bms/2025.3/_bms_read_write.md
+            - bms_error(): bms/2025.3/_bms_error.md
+            - bms_version(): bms/2025.3/_bms_version.md
         - Assembly language:
-            - bms_create: 2025.3/bms_create.md
-            - bms_free: 2025.3/bms_free.md
-            - bms_seek: 2025.3/bms_seek.md
-            - bms_read_write: 2025.3/bms_read_write.md
-            - bms_error: 2025.3/bms_error.md
-            - bms_version: 2025.3/bms_version.md
+            - bms_create: bms/2025.3/bms_create.md
+            - bms_free: bms/2025.3/bms_free.md
+            - bms_seek: bms/2025.3/bms_seek.md
+            - bms_read_write: bms/2025.3/bms_read_write.md
+            - bms_error: bms/2025.3/bms_error.md
+            - bms_version: bms/2025.3/bms_version.md
 
 # extra_css:
 #     - stylesheets/extra.css

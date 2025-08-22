@@ -5,7 +5,7 @@
 .include "telestrat.inc"
 .include "bms.inc"
 
-.import popax
+.import popax, popa
 
 .import tmp1
 
@@ -42,6 +42,6 @@
     ldy     tmp1
 
 
-    jmp     bms_write
+    jmp     bms_read_write
 
 .endproc
