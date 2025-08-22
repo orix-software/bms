@@ -8,7 +8,7 @@
 
 ; bms_read_write(bms_instance, 5, str_hello, mode);
 .proc bms_read_write
-    ;;@brief read or Write bytes (TR0 and TR1 contains the data copyied from bank)
+    ;;@brief read or Write bytes (TR0 and TR1 contains the data copied from bank)
     ;;@inputA contains the low ptr to the bms structure
     ;;@inputX contains the high ptr byte to the bms structure
     ;;@inputY mode
