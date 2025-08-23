@@ -40,7 +40,7 @@ void bms_free(bms *bms);
 
 unsigned int bms_seek(bms *bms, unsigned int offset, unsigned char whence);
 
-unsigned int bms_read_write(bms *bms, unsigned int length, void *data, unsigned mode);
+unsigned int bms_read_write(bms *bms, unsigned int length, void *data, unsigned char mode);
 unsigned char bms_error();
 unsigned char bms_version();
 

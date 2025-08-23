@@ -10,7 +10,7 @@
 .import tmp1
 
 .proc _bms_read_write
-    ;;@proto unsigned int bms_write(bms *bms, unsigned int length, void *data);
+    ;;@proto unsigned int bms_read_write(bms *bms, unsigned int length, void *data, unsigned char mode);
     ;;@brief read or write data
     ;;@param bms (bms *) bms struct
     ;;@param data (void *) data
@@ -21,25 +21,29 @@
     ; RESB := offset 32
     ; TR0 & TR1 := ptr data
     ; TR2 & TR3 := size
+    mode   := tmp1
+    data   := TR0 ; word
+    length := TR2 ; word
+
     jsr     popa
-    sta     tmp1
+    sta     mode
 
 
     jsr     popax
-    sta     TR0 ; Data
-    stx     TR1 ; Data
+    sta     data      ; Data (TR0)
+    stx     data + 1  ; Data (TR1)
 
     ; Length
     jsr     popax
-    sta     TR2
-    stx     TR3
+    sta     length
+    stx     length + 1
 
     ; bms struct
     jsr     popax
     sta     RES
     stx     RES + 1
 
-    ldy     tmp1
+    ldy     mode
 
 
     jmp     bms_read_write

@@ -102,14 +102,14 @@ int main() {
                 i,
                 bms_instance->set[i],
                 bms_instance->bank_register[i],
-               bms_instance->bankid[i],
-               bms_instance->lboundaries[i],
-               bms_instance->hboundaries[i]);
+                bms_instance->bankid[i],
+                bms_instance->lboundaries[i],
+                bms_instance->hboundaries[i]);
     }
 
     puts("+-------------------------------------+");
     printf("Number of banks : %d\n", bms_instance->number_of_banks);
-
+    printf("Writing . ..\n");
     bms_read_write(bms_instance, 5, str_hello, BMS_WRITE_MODE);
     bms_read_write(bms_instance, 5, str_hello, BMS_WRITE_MODE);
 
