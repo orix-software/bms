@@ -5,7 +5,7 @@ path_bms = "tests/bms.c"
 [package]
 name = "bms"
 version = "2025.4"
-authors = [ "jede"]
+authors = [ "jede",]
 license = ""
 edition = "2018"
 cpu = "6502"

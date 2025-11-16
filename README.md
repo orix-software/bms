@@ -13,4 +13,3 @@ manage only 1 bank
 use [bpm](https://github.com/orix-software/bpm) to build
 
 ![Arrays](mkdocs/docs/imgs/arrays.png)
-

@@ -55,6 +55,24 @@ theme:
 
 nav:
     - index.md
+    - 2025.4 Version:
+        - home: 2025.3/index.md
+        - C Language:
+            - void *bms_create(): 2025.4/_bms_create.md
+            - bms_free(): 2025.4/_bms_free.md
+            - bms_seek(): 2025.4/_bms_seek.md
+            - bms_read_write(): 2025.4/_bms_read_write.md
+            - bms_error(): 2025.4/_bms_error.md
+            - bms_version(): 2025.4/_bms_version.md
+        - Assembly language:
+            - bms_create: 2025.4/bms_create.md
+            - bms_free: 2025.4/bms_free.md
+            - bms_seek: 2025.4/bms_seek.md
+            - bms_read_write: 2025.4/bms_read_write.md
+            - bms_error: 2025.4/bms_error.md
+            - bms_version: 2025.4/bms_version.md
+        - Examples:
+            - create_free: example_create_free.md
     - 2025.3 Version:
         - home: 2025.3/index.md
         - C Language:
