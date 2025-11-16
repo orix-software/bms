@@ -7,7 +7,8 @@
 
 .import popax, popa
 
-.import tmp1
+.importzp tmp1
+
 
 .proc _bms_read_write
     ;;@proto unsigned int bms_read_write(bms *bms, unsigned int length, void *data, unsigned char mode);
@@ -25,8 +26,9 @@
     data   := TR0 ; word
     length := TR2 ; word
 
-    jsr     popa
+
     sta     mode
+
 
 
     jsr     popax

@@ -1,3 +1,5 @@
 bpmtmp/
 build
 orixlibs
+*.o
+*.lib

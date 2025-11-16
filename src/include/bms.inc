@@ -13,7 +13,7 @@
 .define BMS_MAX_SIZE_PER_BANK $3F00 ; 16K - 32 bytes for the bank header and signature and others bytes reserved fir bms 
 
 BMS_VERSION:
-    .asciiz "2025.3"
+    .asciiz "2025.4"
 
 
 .define BMS_SEEK_CUR        0

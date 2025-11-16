@@ -34,13 +34,14 @@ int convert_bms_error_into_string(unsigned char errorcode) {
 }
 
 
-unsigned char verify[16001];
+
 
 int main() {
     bms *bms_instance;
     int i;
     off_t length = 640000; // Example length
     char *str_hello = "Hello World";
+    unsigned char *verify = "fffffffddd";
     // Create a new bms instance
     //memset(verify, 'A', sizeof(verify));
     // for (i = 0; i < 16501; i++) {
@@ -109,11 +110,12 @@ int main() {
 
     puts("+-------------------------------------+");
     printf("Number of banks : %d\n", bms_instance->number_of_banks);
-    printf("Writing . ..\n");
+    puts("Writing ...");
     bms_read_write(bms_instance, 5, str_hello, BMS_WRITE_MODE);
-    bms_read_write(bms_instance, 5, str_hello, BMS_WRITE_MODE);
-
-   //bms_read_write(bms_instance, 16001, verify,BMS_WRITE_MODE);
+    // bms_read_write(bms_instance, 5, str_hello, BMS_WRITE_MODE);
+    bms_seek(bms_instance, 0, BMS_SEEK_SET);
+    bms_read_write(bms_instance, 5, verify, BMS_READ_MODE);
+    printf("Verify : %s", verify);
 
     // // // Free the bms instance
     bms_free(bms_instance);

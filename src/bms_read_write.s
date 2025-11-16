@@ -37,7 +37,6 @@
     ;;@```
 
 
-
     ; Y is the mode
     ; RES := ptr struct
 
@@ -55,7 +54,6 @@
     number_of_bank_to_check          := libzp + 11 ; One byte
     number_of_bytes_to_r_w_last_bank := libzp + 12 ; two bytes
     virtual_offset                   := libzp + 14 ; two byte
-
 
     sta     bms_ptr
     stx     bms_ptr + 1
@@ -104,9 +102,8 @@
     lda     (bms_ptr),y
     sta     $343
 
-@L2:
-    ldy     #$00
 
+@L2:
     lda     mode
     beq     @write
 
@@ -122,6 +119,9 @@
 
 
 @write:
+
+
+    ldy     #$00
 
 @L1:
     lda     (bms_data_ptr),y
@@ -188,8 +188,6 @@ bms_compute_bank_set:
     ;;@modifyMEM_TR0
     ;;@modifyMEM_libzp
     ;;@modifyMEM_libzp+9
-
-
 
     lda     #$00 ; First slot (bank)
     sta     current_bank_to_check

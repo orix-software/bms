@@ -6,7 +6,7 @@
 
 .import popax
 
-.importzp tmp0
+.importzp tmp1
 
 ; unsigned int bms_seek(bms *bms, unsigned int offset, unsigned char whence);
 
@@ -17,7 +17,7 @@
     ;;@param offset (unsigned int)  data
     ;;@param whence (unsigned char)
     ;;@returns (unsigned int) result
-    sta     tmp0         ; Save A
+    sta     tmp1         ; Save whence
 
     jsr     popax
     sta     TR0
@@ -27,6 +27,6 @@
 
     ; Send A & X
 
-    ldy     tmp0
+    ldy     tmp1
     jmp     bms_seek
 .endproc

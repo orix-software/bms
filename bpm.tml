@@ -4,9 +4,9 @@ path_bms = "tests/bms.c"
 
 [package]
 name = "bms"
-version = "2025.3"
-authors = [ "nobody@nobody.fr",]
-license = "MIT OR Apache-2.0"
+version = "2025.4"
+authors = [ "jede"]
+license = ""
 edition = "2018"
 cpu = "6502"
 docsfolder = "mkdocs/docs/"
@@ -29,6 +29,9 @@ default_generatedoc_version = "2025.4"
 orix_minimal_kernel_version = "2024.1"
 orix_run_pre_script = "scripts/starting.sub"
 md2hlp = "yes"
+enable_publish = "True"
+enable_build = "True"
+rom_compatible = "False"
 
 [dependencies]
 orixsdk = "2023.3"
