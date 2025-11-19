@@ -41,7 +41,7 @@ int main() {
     int i;
     off_t length = 640000; // Example length
     char *str_hello = "Hello World";
-    unsigned char *verify = "fffffffddd";
+    unsigned char *verify = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
     // Create a new bms instance
     //memset(verify, 'A', sizeof(verify));
     // for (i = 0; i < 16501; i++) {
@@ -111,12 +111,15 @@ int main() {
     puts("+-------------------------------------+");
     printf("Number of banks : %d\n", bms_instance->number_of_banks);
     puts("Writing ...");
-    bms_read_write(bms_instance, 5, str_hello, BMS_WRITE_MODE);
+    bms_read_write(bms_instance, 11, str_hello, BMS_WRITE_MODE);
     // bms_read_write(bms_instance, 5, str_hello, BMS_WRITE_MODE);
+    bms_seek(bms_instance, 3, BMS_SEEK_SET);
+    bms_read_write(bms_instance, 9, verify, BMS_READ_MODE);
+    printf("Verify : %s\n", verify);
     bms_seek(bms_instance, 0, BMS_SEEK_SET);
-    bms_read_write(bms_instance, 5, verify, BMS_READ_MODE);
-    printf("Verify : %s", verify);
-
+    bms_seek(bms_instance, 2, BMS_SEEK_CUR);
+    bms_read_write(bms_instance, 8, verify, BMS_READ_MODE);
+    printf("Verify : %s\n", verify);
     // // // Free the bms instance
     bms_free(bms_instance);
 

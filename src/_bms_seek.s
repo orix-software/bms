@@ -15,7 +15,8 @@
     ;;@brief seek to offset
     ;;@param bms (bms *) bms struct
     ;;@param offset (unsigned int)  data
-    ;;@param whence (unsigned char)
+    ;;@param whence (unsigned char) (possible value : BMS_SEEK_CUR, BMS_SEEK_SET, not managed : BMS_SEEK_END,)
+
     ;;@returns (unsigned int) result
     sta     tmp1         ; Save whence
 

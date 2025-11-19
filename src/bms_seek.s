@@ -9,7 +9,7 @@
 .include "errno.inc"
 
 .proc bms_seek
-    ;;@brief Seek in the bms offset
+    ;;@brief Seek in the bms offset (Available : BMS_SEEK_SET, BMS_SEEK_CUR, not managed : BMS_SEEK_END)
     ;;@inputA low byte of the bms struct pointer
     ;;@inputX high byte of the bms struct pointer
     ;;@inputY whence
@@ -34,7 +34,7 @@
     ; TR0 & TR1 contains the offset
     ; Y the whence
     bms_ptr         := RES
-    tmp16           := libzp
+    tmp16           := RESB
 
     sta     bms_ptr
     stx     bms_ptr + 1

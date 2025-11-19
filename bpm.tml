@@ -1,9 +1,9 @@
 [[bin]]
-name = "bms"
-path_bms = "tests/bms.c"
+name = "bmslib"
+path_bmslib = "tests/bms.c"
 
 [package]
-name = "bms"
+name = "bmslib"
 version = "2025.4"
 authors = [ "jede",]
 license = ""

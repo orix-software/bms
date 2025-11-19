@@ -14,6 +14,16 @@
     ;;@inputY mode
     ;;@inputMEM TR2  length_to_write (high)
     ;;@inputMEM TR3  length_to_write (low)
+    ;;@modifyMEM_RES
+    ;;@modifyMEM_TR4
+    ;;@modifyMEM_TR5
+    ;;@modifyMEM_TR6
+    ;;@modifyMEM_TR7
+    ;;@modifyMEM_libzp
+    ;;@modifyMEM_libzp+1
+    ;;@modifyMEM_libzp+2
+    ;;@modifyMEM_libzp+3
+    ;;@modifyMEM_libzp+4
     ;;@
     ;;@```asm
     ;;@` ; Store size
@@ -43,27 +53,26 @@
     ; TR0 & TR1 := ptr data
     ; TR2 & TR3 := size
 
+    bms_ptr                          := RES  ; 2 bytes
 
-    bms_ptr                          := libzp      ; 2 bytes
-    bms_data_ptr                     := libzp + 2  ; 2 bytes
-    length_to_write                  := libzp + 4  ; 2 bytes
-    mode                             := libzp + 6  ; 1 byte
-    bms_ptr_for_switch               := libzp + 7  ; 2 byte
-    high_offset                      := libzp + 9  ; One byte
-    current_bank_to_check            := libzp + 10 ; One byte
-    number_of_bank_to_check          := libzp + 11 ; One byte
-    number_of_bytes_to_r_w_last_bank := libzp + 12 ; two bytes
-    virtual_offset                   := libzp + 14 ; two byte
+    length_to_write                  := TR2  ; and TR3 2 bytes
+    number_of_bank_to_check          := TR4  ; One byte
+    mode                             := TR5  ; 1 byte
+    current_bank_to_check            := TR6  ; One byte
+    high_offset                      := TR7  ; One byte
+    ;number_of_bytes_to_r_w_last_bank := RESB ; two bytes
+
+
+    bms_data_ptr                     := libzp ; 2 bytes
+    bms_ptr_for_switch               := libzp + 2  ; 2 byte
+    virtual_offset                   := libzp + 4; one bytes
+
+
 
     sta     bms_ptr
     stx     bms_ptr + 1
     sty     mode
 
-    lda     TR2
-    sta     length_to_write
-
-    lda     TR3
-    sta     length_to_write + 1
 
     lda     TR0 ; Data pointer
     sta     bms_data_ptr
@@ -90,6 +99,7 @@
     jsr     bms_bank_save_state
 
     ldy     #bms_struct::current_bank_register ; Y is the offset of the bank id in the bms_struct structure
+
     lda     (bms_ptr),y
 
     sta     $321
@@ -109,7 +119,9 @@
 
 
     ldy     #$00
+
 @loop_read:
+
     lda     (bms_ptr_for_switch),y
     sta     (bms_data_ptr),y
     iny
@@ -137,6 +149,7 @@
     adc     bms_ptr_for_switch
     bcc     @no_inc
     inc     bms_ptr_for_switch + 1
+
 @no_inc:
     sta     bms_ptr_for_switch
 
@@ -154,7 +167,6 @@
 
 
 @no_inc_fp_offset:
-
     lda     length_to_write + 1
     beq     @exit
 
@@ -178,9 +190,9 @@
     sta     $343
 
 @done:
-    jsr     bms_bank_restore_state
+    ; End
+    jmp     bms_bank_restore_state
 
-    rts
 
 bms_compute_bank_set:
     ;;@brief compute bank and set depending of the offset (bms_ptr must be set), and set current bank set
@@ -237,7 +249,7 @@ bms_compute_bank_set:
     tay
     lda     (bms_ptr),y ; get set
     ldy     #bms_struct::current_set
-    sta     (bms_ptr),y
+  ;  sta     (bms_ptr),y  ; commented to avoid issues, the compute is false here when multiple banks are used
 
 
     lda     #bms_struct::bank_register
@@ -246,7 +258,7 @@ bms_compute_bank_set:
     tay
     lda     (bms_ptr),y ; get set
     ldy     #bms_struct::current_bank_register
-    sta     (bms_ptr),y
+  ;  sta     (bms_ptr),y ; commented to avoid issues, the compute is false here when multiple banks are used
 
     ldx     #$00
     ; Compute number of  bank to parse
@@ -262,11 +274,11 @@ bms_compute_bank_set:
     jmp     @L4
 
 @no_others_bank:
-    sta     number_of_bytes_to_r_w_last_bank + 1
-    ldy     #bms_struct::fp_offset
-    lda     (bms_ptr),y ; Get High offset
-    sta     number_of_bytes_to_r_w_last_bank
-    stx     number_of_bank_to_check
+    ; sta     number_of_bytes_to_r_w_last_bank + 1
+    ; ldy     #bms_struct::fp_offset
+    ; lda     (bms_ptr),y ; Get High offset
+    ; sta     number_of_bytes_to_r_w_last_bank
+    ; stx     number_of_bank_to_check
 
     rts
 

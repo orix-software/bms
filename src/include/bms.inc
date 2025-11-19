@@ -1,3 +1,5 @@
+.define BMS_VERSION_2025_4 $00
+
 
 
 .define FLAG_PROT_READ_ONLY  $00 ; On peut lire le contenu de la zone mémoire.
@@ -17,10 +19,11 @@ BMS_VERSION:
 
 
 .define BMS_SEEK_CUR        0
-.define BMS_SEEK_END        1
+;.define BMS_SEEK_END        1 ; Not managed yet
 .define BMS_SEEK_SET        2
 
 
+; Not managed yet
 .ifdef BMS_EXTENDED
 .define BMS_LENGTH_BOUNDARIES 4 ; Length of the boundaries in bytes (16 bits each)
 .define BMS_MAX_BANKS         1

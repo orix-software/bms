@@ -1,3 +1,5 @@
+#define BMS_VERSION_2025_4 $00
+
 #define FLAG_PROT_READ_ONLY  0x00 // On peut lire le contenu de la zone mémoire.
 #define FLAG_PROT_READ_WRITE 0x01 //
 #define FLAG_PERSISTANT_BANK 0x02 // La banque est persistante, elle ne sera pas libérée à la fin de l'exécution du programme.
@@ -13,7 +15,7 @@
 #define BMS_READ_MODE   0x01 // Read mode
 
 #define BMS_SEEK_CUR        0
-#define BMS_SEEK_END        1
+//#define BMS_SEEK_END        1 ; Not managed yet
 #define BMS_SEEK_SET        2
 
 

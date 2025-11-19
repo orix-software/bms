@@ -18,12 +18,12 @@
     ;;@inputY low byte of the length to allocate (0 to 7)
     ;;@inputX high byte of the length to allocate (8 to 15)
     ;;@inputMEM_RES 2 bytes of the length to allocate (16 to 23)
-    ;;@modifyMEM_RES
-    ;;@modifyMEM_TR2
-    ;;@modifyMEM_libzp
-    ;;@modifyMEM_libzp+2
-    ;;@modifyMEM_libzp+4
-    ;;@modifyMEM_libzp+5
+    ;;@modifyMEM_RES Modifyed also with XBANK (allocated bank id)
+    ;;@modifyMEM_TR0
+    ;;@modifyMEM_RESB
+    ;;@modifyMEM_TR0 ; From xmalloc
+    ;;@modifyMEM_TR1 ; From xmalloc
+    ;;@modifyMEM_TR2 ; From xmalloc
     ;;@returnsA the low ptr for bms struct it returns null ($00 in A and X)
     ;;@returnsX the low ptr for bms struct it returns null ($00 in A and X)
     ;;@note Use "BMS_CREATE length0_to_15, length16_to_31, flags" macro in 'include/bms.mac'
@@ -43,13 +43,13 @@
     ;;@```
 
 
-    bms_flags  := TR2  ; One byte
-    bms_length := libzp  ; 2 bytes others bytes are in RES
-    bms_ptr    := libzp + 2 ; 2 bytes
-    bms_tmp1   := libzp + 4
-    bms_tmp2   := libzp + 5
-    bms_tmp3   := libzp + 6
-    bms_tmp4   := libzp + 7
+    bms_flags  := TR0   ; One byte
+    bms_length := RESB  ; RESB
+    bms_ptr    := TR6 ; 2 bytes (and TR7)
+    bms_tmp1   := RES ; One byte
+    bms_tmp2   := RES + 1 ; One byte
+    bms_tmp3   := TR1
+    bms_tmp4   := TR2
 
     sta     bms_length     ; Store the length in the library zero page (low adress length)
     stx     bms_length + 1 ; Store the length in the library zero page (High address length)
@@ -76,7 +76,6 @@
     rts
 
 @returnNULL_length_too_long:
-
     lda     #BMS_LENGTH_REQUESTED_TOO_LONG
     sta     bms_error_var ; Store the error code in the bms_error_var
     lda     #$00
@@ -93,7 +92,7 @@
     ; A flags
     ; X (low) and Y (high) : length
     ; Malloc uses TR7 only
-    malloc #.sizeof(bms_struct) ; Allocate memory for the bms_struct structure
+    malloc #.sizeof(bms_struct) ; Allocate memory for the bms_struct structure (xmalloc uses TR6 & TR7)
 
     cmp     #$00
     bne     @not_null
@@ -138,12 +137,6 @@
 
 @L2:
 
-    ; crlf
-    ; nop
-    ; lda     bms_length
-    ; ldy     bms_length + 1
-    ; print_int ,3,2
-    ; crlf
 
     lda     bms_length ; Load the low byte of the length
     bne     @substract
@@ -178,7 +171,7 @@
     ldy     #bms_struct::current_bank_register
     sta     (bms_ptr),y
 
-    ldy     #bms_struct::current_set
+    ldy     #bms_struct::set
     lda     (bms_ptr),y
     ldy     #bms_struct::current_set
     sta     (bms_ptr),y
@@ -257,10 +250,12 @@
     sta     (bms_ptr),y ; Store the bank id in the bms_struct structure
 
 
-    lda     #bms_struct::set ; Y is the offset of the bank id in the bms_struct structure
-    clc
-    adc     bms_tmp2 ; Add the number of banks to the bank id
-    tay
+    ldy     #bms_struct::set ; Y is the offset of the bank id in the bms_struct structure
+
+ 
+ ;   clc
+    ;adc     bms_tmp2 ; Add the number of banks to the bank id
+    ;tay
     txa
     sta     (bms_ptr),y ; Store the bank id in the bms_struct structure
 
@@ -331,7 +326,7 @@
 .endif
 
     ; Set high boundaries to BMS_MAX_SIZE_PER_BANK
-    ldy     #bms_struct::hboundaries+1
+    ldy     #bms_struct::hboundaries + 1
     lda     #>BMS_MAX_SIZE_PER_BANK
     sta     (bms_ptr),y
     sta     bms_tmp4 ; Store the number of banks in bms_tmp1

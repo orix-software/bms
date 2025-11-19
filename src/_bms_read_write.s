@@ -26,10 +26,7 @@
     data   := TR0 ; word
     length := TR2 ; word
 
-
     sta     mode
-
-
 
     jsr     popax
     sta     data      ; Data (TR0)
@@ -42,12 +39,9 @@
 
     ; bms struct
     jsr     popax
-    sta     RES
-    stx     RES + 1
+
 
     ldy     mode
-
-
     jmp     bms_read_write
 
 .endproc
