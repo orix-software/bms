@@ -1338,6 +1338,19 @@
 <li>X Register : contains the high ptr byte to the bms structure</li>
 <li>Y Register : mode </li>
 </ul>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>RES</li>
+<li>TR4</li>
+<li>TR5</li>
+<li>TR6</li>
+<li>TR7</li>
+<li>libzp</li>
+<li>libzp+1</li>
+<li>libzp+2</li>
+<li>libzp+3</li>
+<li>libzp+4</li>
+</ul>
 <p><strong><em>Example</em></strong></p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="c1">; Store size</span>
 <span class="w"> </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#&lt;5</span>
@@ -1359,14 +1372,11 @@
 <span class="w"> </span><span class="na">.asciiz</span><span class="w"> </span><span class="s">"hello"</span>
 </code></pre></div>
 <p><strong><em>Description</em></strong></p>
-<p>compute bank and set depending of the offset (bms_ptr must be set), and set current bank set</p>
-<p><strong><em>Modify</em></strong></p>
-<ul>
-<li>RESB</li>
-<li>TR0</li>
-<li>libzp</li>
-<li>libzp+9</li>
-</ul>
+<p>compute bank and set depending of the offset (bms_ptr must be set), and set current bank set
+* RESB
+* TR0
+* libzp
+* libzp+9</p>
 
 
 

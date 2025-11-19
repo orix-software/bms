@@ -15,12 +15,12 @@ Create slots for bank memory system. Returns NULL and store error, if something 
 
 ***Modify***
 
-* RES
-* TR2
-* libzp
-* libzp+2
-* libzp+4
-* libzp+5
+* RESModifyed also with XBANK (allocated bank id)
+* TR0
+* RESB
+* TR0; From xmalloc
+* TR1; From xmalloc
+* TR2; From xmalloc
 
 ***Returns***
 

@@ -4,7 +4,7 @@
 
 ***Description***
 
-Seek in the bms offset
+Seek in the bms offset (Available : BMS_SEEK_SET, BMS_SEEK_CUR, not managed : BMS_SEEK_END)
 
 ***Input***
 

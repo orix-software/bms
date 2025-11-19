@@ -12,6 +12,20 @@ read or Write bytes (TR0 and TR1 contains the data copied from bank)
 * X Register : contains the high ptr byte to the bms structure
 * Y Register : mode 
 
+
+***Modify***
+
+* RES
+* TR4
+* TR5
+* TR6
+* TR7
+* libzp
+* libzp+1
+* libzp+2
+* libzp+3
+* libzp+4
+
 ***Example***
 
 ```asm
@@ -38,10 +52,6 @@ str:
 ***Description***
 
 compute bank and set depending of the offset (bms_ptr must be set), and set current bank set
-
-
-***Modify***
-
 * RESB
 * TR0
 * libzp
