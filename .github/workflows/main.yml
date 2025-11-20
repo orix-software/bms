@@ -201,5 +201,6 @@ jobs:
           if [ -f "bpm.tml" ]; then
             export BPM_PUBLISH_KEY=${{ secrets.hash}}
             export PATH=$PATH:../bpm/src/:${GITHUB_WORKSPACE}/cc65/bin
+            echo ${{ github.ref_name }}
             if [ ${{ github.ref_name }} = "master" -o ${{ github.ref_name }} = "main" ]; then bpm publish --official; else bpm publish --alpha; fi
           fi
