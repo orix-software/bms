@@ -195,13 +195,17 @@ jobs:
       - name: Post compilation
         run: mv ../cc65 . && mv ../orix-software . && mv ../orix-sdk . && mv ../md2hlp .
 
+      - name: Get branch name
+        if: github.event_name != 'pull_request'
+        run: echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
       - name: Upload if bpm
         id: bpm_upload
         run: |
           if [ -f "bpm.tml" ]; then
             export BPM_PUBLISH_KEY=${{ secrets.hash}}
             export PATH=$PATH:../bpm/src/:${GITHUB_WORKSPACE}/cc65/bin
-            echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
-            echo branch ${{ github.ref_name }} "BRANCH_NAME
+
+            echo branch ${{ github.ref_name }} $BRANCH_NAME
             if [ ${{ github.ref_name }} = "master" -o ${{ github.ref_name }} = "main" ]; then bpm publish --official; else bpm publish --alpha; fi
           fi
