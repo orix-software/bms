@@ -201,51 +201,5 @@ jobs:
           if [ -f "bpm.tml" ]; then
             export BPM_PUBLISH_KEY=$hash
             export PATH=$PATH:../bpm/src/:${GITHUB_WORKSPACE}/../cc65/bin
-            if [ "$BRANCH_NAME" = "master" -o "$BRANCH_NAME" = "main" ]; then bpm --force-update -V;--force-update publish --official; else bpm publish --alpha; fi
-            echo "BPM_FOUND=True" >> $GITHUB_OUTPUT
+            if [ "$BRANCH_NAME" = "master" -o "$BRANCH_NAME" = "main" ]; then bpm publish --official; else bpm publish --alpha; fi
           fi
-
-  upload:
-    needs: build
-    runs-on: ubuntu-24.04
-    defaults:
-      run:
-        shell: bash
-    env:
-      hash: ${{ secrets.HASH }}
-      version: ${{ needs.build.outputs.version }}
-      repo_name: ${{ needs.build.outputs.repo_name }}
-      BPM_FOUND: ${{ needs.build.outputs.bpm_found }}
-
-    steps:
-      - name: Get branch name
-        if: github.event_name != 'pull_request'
-        run: echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
-       # run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF##*/})"
-
-      - name: Get branch name on pull request
-        if: github.event_name == 'pull_request'
-        run: echo "BRANCH_NAME=${GITHUB_HEAD_REF}" >> GITHUB_ENV
-       #run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
-
-      - name: Get archive name
-        run: echo "ARCHIVE_NAME=${repo_name}.tgz" >> $GITHUB_ENV
-
-      # On pourrait faire l'extraction directement à la racine si VERSION est dans l'artifact
-      - name: Download Artifact
-        id: download
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ needs.build.outputs.repo_name }}
-          path: artifact
-
-      - name: Make archive
-        working-directory: ${{steps.download.outputs.download-path}}
-        run: |
-          echo "Use tar for archive"
-          tar -zcvf $GITHUB_WORKSPACE/$ARCHIVE_NAME *
-
-      - name: Upload to oric
-        run: |
-          if [ "$BRANCH_NAME" = "master" -o "$BRANCH_NAME" = "main" ]; then VERSION="$version"; else VERSION=alpha; fi
-          curl -X POST --data-binary "@${ARCHIVE_NAME}" "https://cdn.oric.org/publish.php?hash=$hash&path=/home/oricoujr/www/ftp/orix/dists/$VERSION/tgz/6502/${ARCHIVE_NAME}"
