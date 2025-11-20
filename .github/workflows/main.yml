@@ -200,6 +200,8 @@ jobs:
         run: |
           if [ -f "bpm.tml" ]; then
             ls -l
+            echo ${GITHUB_WORKSPACE}
+            pwd
             export BPM_PUBLISH_KEY=$hash
             ls -l ${GITHUB_WORKSPACE}/../cc65/bin
             export PATH=$PATH:../bpm/src/:${GITHUB_WORKSPACE}/../cc65/bin
