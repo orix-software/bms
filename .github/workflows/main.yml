@@ -202,7 +202,7 @@ jobs:
             ls -l
             echo ${GITHUB_WORKSPACE}
             pwd
-            export BPM_PUBLISH_KEY=$hash
+            export BPM_PUBLISH_KEY=${{ secrets.hash}}
             ls -l ${GITHUB_WORKSPACE}/cc65/bin
             export PATH=$PATH:../bpm/src/:${GITHUB_WORKSPACE}/cc65/bin
             if [ "$BRANCH_NAME" = "master" -o "$BRANCH_NAME" = "main" ]; then bpm publish --official; else bpm publish --alpha; fi
