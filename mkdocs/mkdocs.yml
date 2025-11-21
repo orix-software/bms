@@ -1,4 +1,4 @@
-site_name: bms v2025.4 DOCUMENTATION
+site_name: bmslib v2025.4 DOCUMENTATION
 
 site_dir: ../docs/
 
@@ -56,7 +56,7 @@ theme:
 nav:
     - index.md
     - 2025.4 Version:
-        - home: 2025.3/index.md
+        - home: 2025.4/index.md
         - C Language:
             - void *bms_create(): 2025.4/_bms_create.md
             - bms_free(): 2025.4/_bms_free.md
